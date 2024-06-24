@@ -778,8 +778,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Bootcamp_Project_111
-  metroPackageVersion: 
+  metroPackageName: BootcampProject111
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -787,7 +787,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Bootcamp_Project_111
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Bootcamp_Project_111
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
