@@ -85,30 +85,33 @@ namespace MarwanZaky
             IsGrounded();
             Inputs();
             SoundManager.Instance.Timer -= Time.deltaTime;
-            if (IsMoving)
+            if(PuzzleManager.Instance.isPuzzleActive == false)
             {
-                LookAtCamera();
-                SoundManager.Instance.SoundPlayOneShot();
-                transform.GetChild(0).GetComponent<Animator>().SetBool("walk", true) ;   
-            }
-            else
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("walk", false);
-            }
-            if (Input.GetKey(runKeyCode))
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("run", true);
-                SoundManager.Instance.SoundPlayOneShot();
-                Movement();
-            }
-            else
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("run", false);
-            }
+                if (IsMoving)
+                {
+                    LookAtCamera();
+                    SoundManager.Instance.SoundPlayOneShot();
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("walk", true);
+                }
+                else
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("walk", false);
+                }
+                if (Input.GetKey(runKeyCode))
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("run", true);
+                    SoundManager.Instance.SoundPlayOneShot();
+                    Movement();
+                }
+                else
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("run", false);
+                }
 
-            Gravity();
-            Movement();
-            controller.Move(velocity * Time.deltaTime); 
+                Gravity();
+                Movement();
+                controller.Move(velocity * Time.deltaTime);
+            }
         }
 
         private void IsGrounded()
@@ -195,8 +198,6 @@ namespace MarwanZaky
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, SMOOTH_TIME * Time.deltaTime);
         }
 
-       
-
         private void ToggleCursorLockState()
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
@@ -220,8 +221,6 @@ namespace MarwanZaky
             OnCurrentControllerChange?.Invoke(currentController);
            
         }
-
-
         #endregion
 
         float GetAnimMoveVal(float move, float animCurVal)
