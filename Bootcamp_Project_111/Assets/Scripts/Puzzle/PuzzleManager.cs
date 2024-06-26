@@ -11,10 +11,10 @@ public class PuzzleManager : MonoBehaviour
     public string correctSequence = "ASDF"; // Çalýnacak sabit nota listesi
    
     public string playerSequence = "";
-    private string currentTriggerSequence = "";
 
     public bool isPuzzleActive = false;
-   
+    private bool isPlayingTriggerSequence = false; // Trigger sequence çalýnýyor mu kontrolü
+
     private void Awake()
     {
         Instance = this;
@@ -23,7 +23,6 @@ public class PuzzleManager : MonoBehaviour
     void Update()
     {
         bool keyPressed = false;
-
         if (isPuzzleActive)
         {
             if (Input.GetKeyDown(KeyCode.A))
@@ -85,6 +84,14 @@ public class PuzzleManager : MonoBehaviour
                ResumeGame();
             }
 
+            if (Input.GetKeyDown(KeyCode.R) && correctSequence != null)
+            {
+                if (!isPlayingTriggerSequence)
+                {
+                    StartCoroutine(PlayTriggerSequence(correctSequence));
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.Backspace))
             {
                 playerSequence = "";
@@ -109,21 +116,25 @@ public class PuzzleManager : MonoBehaviour
 
     void CheckSequence()
     {
-        if (playerSequence.Length >= correctSequence.Length)
+        if(correctSequence != null)
         {
-            if (playerSequence == correctSequence)
+            if (playerSequence.Length >= correctSequence.Length)
             {
-                Debug.Log("Puzzle Solved!");
-                // Puzzle solved logic here
-                StartCoroutine(PuzzleSolved());
-            }
-            else
-            {
-                Debug.Log("Incorrect Sequence");
-                // Reset player sequence if incorrect
-                playerSequence = "";
+                if (playerSequence == correctSequence)
+                {
+                    Debug.Log("Puzzle Solved!");
+                    // Puzzle solved logic here
+                    StartCoroutine(PuzzleSolved());
+                }
+                else
+                {
+                    Debug.Log("Incorrect Sequence");
+                    // Reset player sequence if incorrect
+                    playerSequence = "";
+                }
             }
         }
+       
     }
 
     public void ActivatePuzzle(string triggerSequence)
@@ -141,6 +152,8 @@ public class PuzzleManager : MonoBehaviour
 
     private IEnumerator PlayTriggerSequence(string triggerSequence)
     {
+        correctSequence = triggerSequence;
+        isPlayingTriggerSequence = true;
         foreach (char note in triggerSequence)
         {
             int index = GetIndexFromKey(note);
@@ -149,6 +162,7 @@ public class PuzzleManager : MonoBehaviour
         }
 
         isPuzzleActive = true; // Trigger sequence bittiðinde oyuncu tuþlara basabilir
+        isPlayingTriggerSequence = false;
     }
 
     private IEnumerator PuzzleSolved()
