@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerTagControlller : MonoBehaviour
 { 
@@ -14,6 +15,7 @@ public class PlayerTagControlller : MonoBehaviour
         {
             puzzleManager.ActivatePuzzle(triggerSequence);
             puzzleManager.sceneName = doorName;
+            puzzleManager.isJumpActive = false;
             Debug.Log("Puzzle Activated with sequence: " + triggerSequence);
         }
     }

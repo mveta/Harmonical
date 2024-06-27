@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 619743e10f2a39a42b96a12ba0fc434d, type: 3}
+  - {fileID: 8300000, guid: 9b6ce25ac0e428e41abe4f6b2d396a35, type: 3}
   runner:
   - {fileID: 8300000, guid: 619743e10f2a39a42b96a12ba0fc434d, type: 3}
   - {fileID: 8300000, guid: 694c049aef72a8b45b389afd61ab0aae, type: 3}
@@ -1149,22 +1149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7205f56d9dbe4fdb87f1ff325993b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 2145075728}
   controller: {fileID: 2062364191}
   animator: {fileID: 952715644}
   walkSpeed: 5
   runSpeed: 10
-  gravityScale: 1
-  jumpHeight: 8
-  cursorLockMode: 0
+  gravityScale: 3
+  jumpHeight: 3
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
   moveAir: 0
   controllers: []
   jumpKeyCode: 32
   runKeyCode: 304
-  attackKeyCode: 323
-  granadeKeyCode: 324
   portalGear: 271
   posY: {x: 0, y: 0, z: 0}
   launchSpeed: 10
@@ -1301,7 +1299,7 @@ GameObject:
   - component: {fileID: 2128695641}
   - component: {fileID: 2128695640}
   - component: {fileID: 2128695639}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,6 +1551,7 @@ MonoBehaviour:
   playerSequence: 
   sceneName: 
   isPuzzleActive: 0
+  isJumpActive: 1
 --- !u!1001 &1126941450245183167
 PrefabInstance:
   m_ObjectHideFlags: 0

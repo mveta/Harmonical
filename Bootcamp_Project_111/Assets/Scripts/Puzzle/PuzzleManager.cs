@@ -15,6 +15,7 @@ public class PuzzleManager : MonoBehaviour
     public string sceneName = "";
 
     public bool isPuzzleActive = false;
+    public bool isJumpActive = true;
     private bool isPlayingTriggerSequence = false; // Trigger sequence çalýnýyor mu kontrolü
 
     private void Awake()
@@ -148,6 +149,7 @@ public class PuzzleManager : MonoBehaviour
     public void ResumeGame()
     {
         isPuzzleActive = false;
+        isJumpActive = true;
         Time.timeScale = 1f; // Oyun devam ediyor
     }
 
@@ -161,7 +163,6 @@ public class PuzzleManager : MonoBehaviour
             PlaySound(index);
             yield return new WaitForSecondsRealtime(audioSource.clip.length + 0.1f); // Sesin tamamýný çalmak için bekle
         }
-
         isPuzzleActive = true; // Trigger sequence bittiðinde oyuncu tuþlara basabilir
         isPlayingTriggerSequence = false;
     }
