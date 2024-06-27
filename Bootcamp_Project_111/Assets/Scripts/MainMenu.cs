@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void playLocal()
     {
-
+        SceneManager.LoadScene(2);
     }
     public void playOnline()
     {

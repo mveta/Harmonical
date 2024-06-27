@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class PuzzleManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] keySounds;
+
     public string correctSequence = "ASDF"; // Çalýnacak sabit nota listesi
-   
     public string playerSequence = "";
+    public string sceneName = "";
 
     public bool isPuzzleActive = false;
     private bool isPlayingTriggerSequence = false; // Trigger sequence çalýnýyor mu kontrolü
@@ -122,9 +124,8 @@ public class PuzzleManager : MonoBehaviour
             {
                 if (playerSequence == correctSequence)
                 {
-                    Debug.Log("Puzzle Solved!");
                     // Puzzle solved logic here
-                    StartCoroutine(PuzzleSolved());
+                    StartCoroutine(PuzzleSolved());     
                 }
                 else
                 {
@@ -171,6 +172,11 @@ public class PuzzleManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(audioSource.clip.length);
         Debug.Log("Puzzle Solved!");
         ResumeGame();
+
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     private int GetIndexFromKey(char key)
