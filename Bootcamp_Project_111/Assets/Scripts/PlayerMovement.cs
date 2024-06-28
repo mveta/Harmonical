@@ -103,7 +103,7 @@ namespace MarwanZaky
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
-                if (manager.isJumpActive == true)
+                if (manager.isPuzzleActive == false)
                     Jump();
             }
         }

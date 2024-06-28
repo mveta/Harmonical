@@ -14,7 +14,9 @@ public class PuzzleManager : MonoBehaviour
     public string playerSequence = "";
     public string sceneName = "";
 
+    [HideInInspector]
     public bool isPuzzleActive = false;
+    [HideInInspector]
     public bool isJumpActive = true;
     private bool isPlayingTriggerSequence = false; // Trigger sequence çalýnýyor mu kontrolü
 
@@ -126,7 +128,8 @@ public class PuzzleManager : MonoBehaviour
                 if (playerSequence == correctSequence)
                 {
                     // Puzzle solved logic here
-                    StartCoroutine(PuzzleSolved());     
+                    StartCoroutine(PuzzleSolved());
+                    
                 }
                 else
                 {
@@ -161,7 +164,7 @@ public class PuzzleManager : MonoBehaviour
         {
             int index = GetIndexFromKey(note);
             PlaySound(index);
-            yield return new WaitForSecondsRealtime(audioSource.clip.length + 0.1f); // Sesin tamamýný çalmak için bekle
+            yield return new WaitForSecondsRealtime(audioSource.clip.length + 0.02f); // Sesin tamamýný çalmak için bekle
         }
         isPuzzleActive = true; // Trigger sequence bittiðinde oyuncu tuþlara basabilir
         isPlayingTriggerSequence = false;
@@ -169,11 +172,16 @@ public class PuzzleManager : MonoBehaviour
 
     private IEnumerator PuzzleSolved()
     {
+       
         // Son notanýn tamamen çalýnmasý için biraz bekle
         yield return new WaitForSecondsRealtime(audioSource.clip.length);
         Debug.Log("Puzzle Solved!");
         ResumeGame();
-
+        foreach (var c in ParticleManager.Instance.confettiEffect)
+        {
+            c.SetActive(true);
+        }
+        yield return new WaitForSecondsRealtime(ParticleManager.Instance.confettiEffect.Length);
         if (!string.IsNullOrEmpty(sceneName))
         {
             SceneManager.LoadScene(sceneName);
