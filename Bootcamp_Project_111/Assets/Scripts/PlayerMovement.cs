@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using DG.Tweening;
+using System.Collections;
 namespace MarwanZaky
 {
     public class PlayerMovement : Character
@@ -46,12 +47,22 @@ namespace MarwanZaky
         public Vector3 posY;
         public float launchSpeed = 10f;
 
+        //SSSSSSSSSSSSSSSSSSSSSSSSSSSs
+        AudioSource _audioSource;   
+        [SerializeField] GameObject[] platforms;
+        bool doubleJump = false;
+        bool tripleJump = false;
+        Rigidbody _rb;
+ 
+    
+
         private void Start()
         {
 
             col = controller.GetComponent<Collider>();
             cam = Camera.main.transform;
-
+            _audioSource = GetComponent<AudioSource>();
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -106,6 +117,70 @@ namespace MarwanZaky
                 if (manager.isPuzzleActive == false)
                     Jump();
             }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                //play C
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
+
+                if(controller.isGrounded)
+                {
+                    Jump();
+                    doubleJump = true;
+                }
+                //jump(sonra I ve P ile triple jump.)
+            }
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                //play D
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
+                 
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                //play E
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
+
+                if (controller.isGrounded)
+                {
+                    //Dash();
+ 
+                }
+                else if(!controller.isGrounded && doubleJump)
+                {
+                    //instantiate doesnt work sometimes?
+                    GameObject newPlatform = Instantiate(platforms[0], transform.position - Vector3.up, Quaternion.identity);
+                    Jump();
+                    StartCoroutine(DestroyPlatform(newPlatform));
+                    doubleJump = false;
+                    tripleJump = true;
+                }
+                
+            }
+          
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
+                //play F 
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
+                //play G 
+
+
+                if (!controller.isGrounded && tripleJump)
+                {
+                    GameObject newPlatform = Instantiate(platforms[1], transform.position - Vector3.up, Quaternion.identity);
+                    Jump();
+                    StartCoroutine(DestroyPlatform(newPlatform));
+                    tripleJump=false;
+                }
+            }
+            //if (Input.GetKeyDown(KeyCode.K))
+            //{
+            //    _audioSource.PlayOneShot(SoundManager.Instance.sounds[6]);
+            //    // this changes in different levels. The key note. C,D,(not E),F,G,A olacak hepsi.
+            //}
         }
 
         private void Gravity()
@@ -119,16 +194,23 @@ namespace MarwanZaky
 
             if (moveAir == MoveAir.NotMoveable && !isGrounded)
                 return;
-
+            /// SSSSsSSSSSSSS
             var moveX = Input.GetAxis("Horizontal");
             var moveY = Input.GetAxis("Vertical");
-            
+
+
+
             var move = (transform.right * moveX + transform.forward * moveY).normalized;
+            
+
 
             animator.SetFloat("MoveX", GetAnimMoveVal(moveX, animator.GetFloat("MoveX")));
             animator.SetFloat("MoveY", GetAnimMoveVal(moveY, animator.GetFloat("MoveY")));
 
             controller.Move(move * Speed * Time.deltaTime);
+            
+            // transform.rotation = Quaternion.LookRotation(new Vector3(moveX, 0, moveY));
+
             IsMoving = move.magnitude >= IS_MOVING_MIN_MAG;
             
         }
@@ -137,6 +219,7 @@ namespace MarwanZaky
         {
             SoundManager.Instance.SoundPlay(0);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * GRAVITY * gravityScale);
+            
         }
 
         private void LookAtCamera()
@@ -177,5 +260,19 @@ namespace MarwanZaky
             var res = Mathf.Lerp(animCurVal, newVal, SMOOTH_TIME * Time.deltaTime);
             return newVal;
         }
+
+        //Platform destroyer SSSSsSSSSSSSSs
+        IEnumerator DestroyPlatform(GameObject obj)
+        {
+            yield return new WaitForSeconds(1f);
+
+            Destroy(obj);
+
+            
+        }
+
+
     }
+
+
 }
