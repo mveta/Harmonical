@@ -47,7 +47,7 @@ namespace MarwanZaky
         public Vector3 posY;
         public float launchSpeed = 10f;
 
-        //SSSSSSSSSSSSSSSSSSSSSSSSSSSs
+        //
         AudioSource _audioSource;   
         [SerializeField] GameObject[] platforms;
         bool doubleJump = false;
@@ -194,27 +194,26 @@ namespace MarwanZaky
 
             if (moveAir == MoveAir.NotMoveable && !isGrounded)
                 return;
-            /// SSSSsSSSSSSSS
+
             var moveX = Input.GetAxis("Horizontal");
             var moveY = Input.GetAxis("Vertical");
 
-
-
-            var move = (transform.right * moveX + transform.forward * moveY).normalized;
-            
-
+            // Hareket vektörü
+            var move = new Vector3(moveX, 0, moveY).normalized;
 
             animator.SetFloat("MoveX", GetAnimMoveVal(moveX, animator.GetFloat("MoveX")));
             animator.SetFloat("MoveY", GetAnimMoveVal(moveY, animator.GetFloat("MoveY")));
 
-            controller.Move(move * Speed * Time.deltaTime);
-            
-            // transform.rotation = Quaternion.LookRotation(new Vector3(moveX, 0, moveY));
+            if (move.magnitude >= IS_MOVING_MIN_MAG)
+            {
+                // Karakteri hareket yönüne döndür
+                transform.rotation = Quaternion.LookRotation(move);
+                // Karakteri hareket ettir
+                controller.Move(move * Speed * Time.deltaTime);
+            }
 
             IsMoving = move.magnitude >= IS_MOVING_MIN_MAG;
-            
         }
-
         private void Jump()
         {
             SoundManager.Instance.SoundPlay(0);
