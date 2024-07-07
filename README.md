@@ -125,7 +125,7 @@ Unity
 
 
 ## ***Sprint İncelemesi*** :
-* Öncelikle kameranın oyuncuyu takip etmesini karalaştırmıştık fakat sonradan kamranın sabit
+* Öncelikle kameranın oyuncuyu takip etmesini karalaştırmıştık fakat sonradan kameranın sabit
   kalmasında karar kıldık.
   
 * Her level için farklı ortamların olmasında karar kıldık.
@@ -133,7 +133,10 @@ Unity
 * Sprint Rewiev Katılımcıları: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
 
 ## ***Sprint Retrospective*** :
-* 
+
+* Karakter modellemenin hızlandırılması kararlaştırılmıştır.
+* Developerlar ile iletişim sıklığının artırılması ve geri bildirimlerin daha sık alınması hedeflenmektedir.
+* Her sprint için tahmini puanlamaların gözden geçirilmesine karar verilmiştir.
 
 
   
