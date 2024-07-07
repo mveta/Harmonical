@@ -29,6 +29,7 @@ Players who enjoy puzzle games, music enthusiasts, and those looking for a uniqu
 
 
 # Game Concept
+
 ## Core Concept
 Players take on the role of Melody, a talented student musician exploring a magical world where music holds the power to solve puzzles, interact with the environment, and uncover secrets. A friend can join locally or online as Harmony, Melody's musical partner, to collaborate on challenges.
 
@@ -39,8 +40,11 @@ Players take on the role of Melody, a talented student musician exploring a magi
 * //Cooperative Play (not included in the project): A second player can join as Harmony, offering support in solving puzzles and exploring the world
 
 # Story and Characters
+
 ## Story
-- Melody, a gifted student musician, discovers that her world is out of harmony. To restore balance, she embarks on a journey through various musical landscapes. Guided by ancient musical spirits, Melody learns the true power of music and its ability to connect and heal.
+ Melody, a gifted student musician, discovers that her world is out of harmony. To restore balance, she embarks on a journey through various musical landscapes. Guided by ancient musical spirits, Melody learns the true power of music and its ability to connect and heal.
+
+ 
 
 
 
