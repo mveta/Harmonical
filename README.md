@@ -103,13 +103,14 @@ Unity
 
 # SPRİNT 1 
 
-* Sprint için tahmin edilen puan = 000
+* Sprint için tahmin edilen puan = 40
 
-* ***Puan tamamlama mantığı***: Toplamda proje boyunca tamamlanması gereken 000 puanlık backlog bulunmaktadır.
-   3 sprint'e bölündüğünde ilk sprint'in en azından 000 ile başlaması gerektiğine karar verildi.
+* ***Puan tamamlama mantığı***: Toplamda proje boyunca tamamlanması gereken 150 puanlık backlog bulunmaktadır.
+   3 sprint'e bölündüğünde ilk sprint'in en azından 40 ile başlaması gerektiğine karar verildi.
 
 * ***Daily Scrum*** : https://drive.google.com/drive/folders/1A4b4doSORyi1gMcEQTELpwuy3q15COqj?usp=drive_link
-
+  
+### Sprint board ekran görüntüsü:
   
 
 
