@@ -111,6 +111,7 @@ Unity
 * ***Daily Scrum*** : https://drive.google.com/drive/folders/1A4b4doSORyi1gMcEQTELpwuy3q15COqj?usp=drive_link
   
 ### Sprint board ekran görüntüsü:
+
   
 
 
