@@ -1,2 +1,2 @@
-# Bootcamp111
-Oyun ve uygulama akademisi Bootcamp projesi.
+TAKIM İSMİ
+Takım Unity 111
