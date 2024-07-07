@@ -1,9 +1,6 @@
 # Team Name
 Takım Unity 111
 
-# Produc Name
-Harmonical
-
 ## Team Members
 • Scrum Master: Şevval Necla Er 
 
@@ -14,5 +11,18 @@ Harmonical
 • Developers: Onur Küçük, Polatcan Gürbüz, Onur Emre Yılmaz 
 
 • Sound Designers: 
+
+
+# Game Overview
+
+## Game Title
+Harmonical 
+
+## Genre
+Puzzle Adventure
+
+## Platform
+PC and Console
+
 
 
