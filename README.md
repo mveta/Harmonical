@@ -101,6 +101,16 @@ Unity
 * PC: Windows, Mac
 
 
+# SPRİNT 1 
+
+* Sprint için tahmin edilen puan = 000
+
+* ***Puan tamamlama mantığı***: Toplamda proje boyunca tamamlanması gereken 000 puanlık backlog bulunmaktadır.
+   3 sprint'e bölündüğünde ilk sprint'in en azından 000 ile başlaması gerektiğine karar verildi.
+
+  
+
+
 
 
 
