@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Puzzle
   - Ground
+  - Water
+  - Dam
+  - Final
   layers:
   - Default
   - TransparentFX

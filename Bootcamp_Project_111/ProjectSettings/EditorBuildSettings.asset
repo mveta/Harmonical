@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/POP.unity
     guid: 35c38b8fa0d7f9b4e9c98554e4f4173d
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 47620fd84e316e2419183c15772dad78
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
