@@ -108,6 +108,8 @@ Unity
 * ***Puan tamamlama mantığı***: Toplamda proje boyunca tamamlanması gereken 000 puanlık backlog bulunmaktadır.
    3 sprint'e bölündüğünde ilk sprint'in en azından 000 ile başlaması gerektiğine karar verildi.
 
+* ***Daily Scrum*** : https://drive.google.com/drive/folders/1A4b4doSORyi1gMcEQTELpwuy3q15COqj?usp=drive_link
+
   
 
 
