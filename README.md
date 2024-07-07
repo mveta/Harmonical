@@ -139,7 +139,9 @@ Unity
 ## ***Sprint Retrospective*** :
 
 * Karakter modellemenin hızlandırılması kararlaştırılmıştır.
+* 
 * Developerlar ile iletişim sıklığının artırılması ve geri bildirimlerin daha sık alınması hedeflenmektedir.
+* 
 * Her sprint için tahmini puanlamaların gözden geçirilmesine karar verilmiştir.
 
 
