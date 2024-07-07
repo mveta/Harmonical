@@ -100,7 +100,7 @@ Unity
 ## Platform Requirements
 * PC: Windows, Mac
 
-
+## product
 # SPRİNT 1 
 
 * Sprint için tahmin edilen puan = 40
@@ -108,9 +108,17 @@ Unity
 * ***Puan tamamlama mantığı***: Toplamda proje boyunca tamamlanması gereken 150 puanlık backlog bulunmaktadır.
    3 sprint'e bölündüğünde ilk sprint'in en azından 40 ile başlaması gerektiğine karar verildi.
 
-* ***Daily Scrum*** : https://drive.google.com/drive/folders/1A4b4doSORyi1gMcEQTELpwuy3q15COqj?usp=drive_link
   
-### Sprint board ekran görüntüsü:
+## Sprint board ekran görüntüsü: 
+![resim](https://github.com/OnurKck8/Bootcamp111/blob/016d9f5ea64490b66237e1bb426f4fc70e827ade/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-07-07%20204047.png)
+
+
+* ***Daily Scrum*** : https://drive.google.com/drive/folders/1A4b4doSORyi1gMcEQTELpwuy3q15COqj?usp=drive_link
+
+# Ürün Durumu:
+
+*main menü 
+
 
   
 
