@@ -121,6 +121,18 @@ Unity
 [video1](https://github.com/OnurKck8/Bootcamp111/blob/a95efc5de3bdf0a83755cb6bb40c1c8e724162fb/video1.mp4)
 
 
+
+
+
+## ***Sprint İncelemesi*** :
+* Öncelikle kameranın oyuncuyu takip etmesini karalaştırmıştık fakat sonradan kamranın sabit
+  kalmasında karar kıldık.
+  
+*Her level için farklı ortamların olmasında karar kıldık.
+
+*Sprint Rewiev Katılımcıları: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
+
+
   
 
 
