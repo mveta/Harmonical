@@ -6,11 +6,11 @@ Takım Unity 111
 
 • Product Owner: Şeyda Ballı
 
-• Game Designers: 
+• Game Designers: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
 
 • Developers: Onur Küçük, Polatcan Gürbüz, Onur Emre Yılmaz 
 
-• Sound Designers: 
+• Sound Designers: Şeyda Ballı
 
 
 # Game Overview
@@ -128,9 +128,12 @@ Unity
 * Öncelikle kameranın oyuncuyu takip etmesini karalaştırmıştık fakat sonradan kamranın sabit
   kalmasında karar kıldık.
   
-*Her level için farklı ortamların olmasında karar kıldık.
+* Her level için farklı ortamların olmasında karar kıldık.
 
-*Sprint Rewiev Katılımcıları: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
+* Sprint Rewiev Katılımcıları: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
+
+## ***Sprint Retrospective*** :
+* 
 
 
   
