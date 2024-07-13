@@ -176,11 +176,7 @@ namespace MarwanZaky
                     tripleJump=false;
                 }
             }
-            //if (Input.GetKeyDown(KeyCode.K))
-            //{
-            //    _audioSource.PlayOneShot(SoundManager.Instance.sounds[6]);
-            //    // this changes in different levels. The key note. C,D,(not E),F,G,A olacak hepsi.
-            //}
+          
         }
 
         private void Gravity()
