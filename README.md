@@ -101,6 +101,7 @@ Unity
 * PC: Windows, Mac
 
 ## ***Backlog URL*** : https://miro.com/app/board/uXjVK0giHvY=/
+
 # SPRİNT 1 
 
 * Sprint için tahmin edilen puan = 40
@@ -146,7 +147,11 @@ Unity
 
 
   
+# SPRİNT 2
 
+* Sprint için tahmin edilen puan = 15
+
+* ## Sprint board ekran görüntüsü: 
 
 
 
