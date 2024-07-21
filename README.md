@@ -155,8 +155,13 @@ Unity
 
 ![resim](https://github.com/OnurKck8/Bootcamp111/blob/37b6268343c717c525fa86554bef24d8fec0787e/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-07-21%20220246.png)
 
-# ***NOT: bu sprint sürecinde üyelerin özel sebeplerinden dolayı çok fazla iletişimde kalamadık.
+***NOT***: bu sprint sürecinde üyelerin özel sebeplerinden dolayı çok fazla iletişimde kalamadık.
 
+# Ürün Durumu:
+
+
+[video1](https://github.com/OnurKck8/Bootcamp111/blob/a19c04f4c7061f9f1528c57fc48b4b431075e2eb/WhatsApp%20Video%202024-07-17%20saat%2000.38.12_6484f305.mp4)
+![resim](https://github.com/OnurKck8/Bootcamp111/blob/a19c04f4c7061f9f1528c57fc48b4b431075e2eb/WhatsApp%20G%C3%B6rsel%202024-07-12%20saat%2017.38.28_80e8579f.jpg)
 
 
 
