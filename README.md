@@ -161,11 +161,23 @@ Unity
 
 
 [video1](https://github.com/OnurKck8/Bootcamp111/blob/a19c04f4c7061f9f1528c57fc48b4b431075e2eb/WhatsApp%20Video%202024-07-17%20saat%2000.38.12_6484f305.mp4)
+
+
 ![resim](https://github.com/OnurKck8/Bootcamp111/blob/a19c04f4c7061f9f1528c57fc48b4b431075e2eb/WhatsApp%20G%C3%B6rsel%202024-07-12%20saat%2017.38.28_80e8579f.jpg)
 
 
 
 
+## ***Sprint İncelemesi*** :
+
+* Her level için farklı ortamlar ve farklı temalar olmasını , her levelde yeni bir özellik eklenmesine karar verdik.
+* Sprint Rewiev Katılımcıları: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
+
+## ***Sprint Retrospective*** :
+
+* Karakter modellemenin hızlandırılması kararlaştırılmıştır.
+  
+* Developerlar ile iletişim sıklığının artırılması.
 
 
 
