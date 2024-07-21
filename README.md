@@ -151,7 +151,9 @@ Unity
 
 * Sprint için tahmin edilen puan = 15
 
-* ## Sprint board ekran görüntüsü: 
+* ## Sprint board ekran görüntüsü:
+
+![resim](https://github.com/OnurKck8/Bootcamp111/blob/37b6268343c717c525fa86554bef24d8fec0787e/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-07-21%20220246.png)
 
 
 
