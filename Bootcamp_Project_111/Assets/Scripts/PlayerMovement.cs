@@ -112,11 +112,6 @@ namespace MarwanZaky
 
         private void Inputs()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            {
-                if (manager.isPuzzleActive == false)
-                    Jump();
-            }
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 //play C
@@ -140,12 +135,7 @@ namespace MarwanZaky
                 //play E
                 _audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
 
-                if (controller.isGrounded)
-                {
-                    //Dash();
- 
-                }
-                else if(!controller.isGrounded && doubleJump)
+                if(!controller.isGrounded && doubleJump)
                 {
                     //instantiate doesnt work sometimes?
                     GameObject newPlatform = Instantiate(platforms[0], transform.position - Vector3.up, Quaternion.identity);
