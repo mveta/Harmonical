@@ -10,6 +10,7 @@ TagManager:
   - Dam
   - Final
   - Portal
+  - Record
   layers:
   - Default
   - TransparentFX

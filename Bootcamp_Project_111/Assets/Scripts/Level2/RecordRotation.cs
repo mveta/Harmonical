@@ -7,10 +7,12 @@ public class RecordRotation : MonoBehaviour
     [SerializeField]
     float rotationSpeed;
  
-    void Update()
+    void FixedUpdate()
     {
-        transform.Rotate(0, 0, Time.smoothDeltaTime * rotationSpeed);
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
+
+    
     private void OnTriggerEnter(Collider other)
     {
         other.transform.SetParent(transform);
@@ -20,4 +22,6 @@ public class RecordRotation : MonoBehaviour
     {
         other.transform.SetParent(null);  
     }
+    
+
 }

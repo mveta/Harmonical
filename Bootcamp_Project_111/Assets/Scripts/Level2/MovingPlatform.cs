@@ -54,12 +54,4 @@ public class MovingPlatform : MonoBehaviour
         timeToWaypoint = distanceToWaypoint / speed;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        other.transform.SetParent(transform);
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        other.transform.SetParent(null);
-    }
 }

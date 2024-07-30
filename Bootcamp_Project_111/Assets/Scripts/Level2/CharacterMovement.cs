@@ -18,10 +18,18 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight = 20f;
     bool doubleJump = false;
     bool tripleJump = false;
+    bool onRecord = false;
+    Transform record;
+
+    [SerializeField] GameObject[] platforms;
+
+    GameManager _gameManager;
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _animator = transform.GetComponentInChildren<Animator>();
+        _gameManager = GameManager.Instance;
     }
 
     void Update()
@@ -29,16 +37,19 @@ public class CharacterMovement : MonoBehaviour
         GroundCheck();
         LookUp(); 
         Move();
-        
-        if(isGrounded && Input.GetKeyDown(KeyCode.Y))
-        {
-            Jump();
-        }
+
+        Inputs();
 
         if(!isGrounded && verticalVelocity < 0f)
         {
             _animator.SetBool("IsFalling", true);
-            Debug.Log("isfalling true");
+
+            if (onRecord)
+            {
+                transform.parent = null;
+                onRecord = false;
+                
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -49,6 +60,12 @@ public class CharacterMovement : MonoBehaviour
         }
 
                 
+
+        if(onRecord && record != null)
+        {
+            transform.parent = record.transform;
+        }
+              
     }
 
     void LookUp()
@@ -97,6 +114,13 @@ public class CharacterMovement : MonoBehaviour
     {
         verticalVelocity = Mathf.Sqrt(jumpHeight * 3.0f * gravityValue);
         _animator.SetBool("IsJumping", true);
+
+        if (onRecord)
+        {
+            transform.parent = null;
+            onRecord = false;
+        }
+
     }
 
     void GroundCheck()
@@ -126,13 +150,22 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
-    /*
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.gameObject.CompareTag("Record"))
+        {
+            onRecord = true;
+            record = hit.transform;
+        }
+    }
+    
+    
     private void Inputs()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y)) // && _gameManager.keyActive_y
         {
             //play C
-            _audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
+            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
 
             if (isGrounded)
             {
@@ -143,21 +176,24 @@ public class CharacterMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            //play D
-            _audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
+            Debug.Log("Play D");
+            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
 
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             //play E
-            _audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
+            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
 
             if (!isGrounded && doubleJump)
             {
-                //instantiate doesnt work sometimes?
-                GameObject newPlatform = Instantiate(platforms[0], transform.position - Vector3.up, Quaternion.identity);
+                platforms[0].SetActive(true);
+                platforms[0].transform.parent = null;
+     
                 Jump();
-                StartCoroutine(DestroyPlatform(newPlatform));
+
+                StartCoroutine(ResetPlatform(platforms[0]));
+
                 doubleJump = false;
                 tripleJump = true;
             }
@@ -166,25 +202,37 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            _audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
-            //play F 
+            Debug.Log("Play F");
+            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
+             
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            _audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
+            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
             //play G 
 
 
             if (!isGrounded && tripleJump)
             {
-                GameObject newPlatform = Instantiate(platforms[1], transform.position - Vector3.up, Quaternion.identity);
+                platforms[1].SetActive(true);
+                platforms[1].transform.parent = null;
+
                 Jump();
-                StartCoroutine(DestroyPlatform(newPlatform));
+
+                StartCoroutine(ResetPlatform(platforms[1]));
                 tripleJump = false;
             }
         }
-    }
-    */
 
+    }
+
+    IEnumerator ResetPlatform(GameObject obj)
+    {
+        yield return new WaitForSeconds(1f);
+
+        obj.SetActive(false);
+        obj.transform.parent = transform;
+        obj.transform.localPosition = Vector3.zero;
+    }
 
 }

@@ -8,9 +8,11 @@ public class SwitchActivation : MonoBehaviour
     private MovingPlatform _movingPlatform;
 
     bool pressedY;
+    GameManager gameManager;
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         pressedY = false;
     }
 
@@ -22,7 +24,6 @@ public class SwitchActivation : MonoBehaviour
         }
         if (pressedY && Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("Moving platform activated");
             _movingPlatform.moveable = true;
         }
     }
