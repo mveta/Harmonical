@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void playLocal()
+    [SerializeField] GameObject optionscanvas;
+    public void play()
     {
         SceneManager.LoadScene(2);
     }
-    public void playOnline()
-    {
-
-    }
+   
     public void options()
     {
-        SceneManager.LoadScene("OptionsMenu");
+        optionscanvas.SetActive(true);
     }
     public void quit()
     {
@@ -23,6 +21,6 @@ public class MainMenu : MonoBehaviour
     }
     public void HomeButton()
     {
-        SceneManager.LoadScene("mainmenu");
+        optionscanvas.SetActive(false);
     }
 }

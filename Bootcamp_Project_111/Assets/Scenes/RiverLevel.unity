@@ -10313,8 +10313,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759382889}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.122336, y: 0.03440153, z: 0.0042429846, w: 0.99188334}
-  m_LocalPosition: {x: -3.9612122, y: -1.804842, z: -4.6707153}
+  m_LocalRotation: {x: -0.12233609, y: 0.03439693, z: 0.0042424193, w: 0.99188346}
+  m_LocalPosition: {x: -3.9611816, y: -1.804842, z: -4.6707153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21291,7 +21291,7 @@ Transform:
   m_GameObject: {fileID: 1763995171}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2885671, y: -0.000000011223198, z: 0.000000003382542, w: 0.9574597}
-  m_LocalPosition: {x: 428, y: 24.720432, z: -962}
+  m_LocalPosition: {x: 2125, y: 33.02, z: -802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24893,7 +24893,7 @@ Transform:
   m_GameObject: {fileID: 1999126536}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 428, y: 14.700432, z: -952}
+  m_LocalPosition: {x: 2125, y: 23, z: -792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24966,7 +24966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditCanvas: {fileID: 2005418261}
   animempty: {fileID: 1630877852}
-  creditsanim: {fileID: 0}
+  anim: {fileID: 1630877854}
 --- !u!1 &2005418261
 GameObject:
   m_ObjectHideFlags: 0

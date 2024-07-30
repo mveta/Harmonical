@@ -1,29 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalPlayerDetect : MonoBehaviour
 {
 
     [SerializeField] GameObject creditCanvas,animempty;
-     Animator anim;
-    //[SerializeField] Animation creditsanim;
-    [SerializeField] AnimationClip creditsanim;
+     [SerializeField]Animator anim;
+    AnimatorStateInfo animStateInfo;
 
-    private void Awake()
+    private void Update()
     {
-        anim = animempty.GetComponent<Animator>();
+        animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        if(animStateInfo.normalizedTime > 1.0f)
+        {
+            SceneManager.LoadScene("mainmenu");
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Portal")){
             creditCanvas.SetActive(true);
-            //if(anim.GetCurrentAnimatorStateInfo(0).IsName("credits") &&
-            //    anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            //{
-            //    Debug.Log("bitti");
-            //}
-            
+           
         }
     }
 
