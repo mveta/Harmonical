@@ -19,7 +19,7 @@ public class SwitchControl : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Exited");
+            
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         }
