@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Dam
   - Final
+  - Record
   layers:
   - Default
   - TransparentFX
