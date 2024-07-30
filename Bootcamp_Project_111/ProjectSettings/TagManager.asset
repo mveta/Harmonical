@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Dam
   - Final
+  - Portal
   layers:
   - Default
   - TransparentFX

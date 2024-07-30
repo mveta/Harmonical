@@ -40,6 +40,15 @@ public class CharacterMovement : MonoBehaviour
             _animator.SetBool("IsFalling", true);
             Debug.Log("isfalling true");
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            runSpeed = 15f;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift)) {
+            runSpeed = 7f;
+        }
+
+                
     }
 
     void LookUp()
