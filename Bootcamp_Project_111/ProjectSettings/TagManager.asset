@@ -11,6 +11,7 @@ TagManager:
   - Final
   - Portal
   - Record
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

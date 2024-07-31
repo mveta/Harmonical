@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject optionscanvas;
     public void play()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("HomeCinematic");
     }
    
     public void options()
