@@ -9,13 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/mainmenu.unity
     guid: baaedab0bc4fdcc418ca3206ed026f64
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Prototypes/HomeCinematic.unity
+    guid: 14f68ddf5518bac4db056020ecd40ae4
   - enabled: 1
-    path: Assets/Scenes/POP.unity
-    guid: 4c88d3ca8e78bf54d8bbdd103e73bb98
-  - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 47620fd84e316e2419183c15772dad78
+    path: Assets/Scenes/RiverLevel.unity
+    guid: 52658d906a129e942b1668a7180df42a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
