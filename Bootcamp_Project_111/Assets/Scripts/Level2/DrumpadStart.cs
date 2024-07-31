@@ -14,6 +14,8 @@ public class DrumpadStart : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //sound
+
         transform.parent.GetChild(index+1).gameObject.SetActive(true);
 
         for (int i = index + 2; i < transform.parent.childCount; i++)

@@ -9,16 +9,11 @@ public class Horn : MonoBehaviour
 
     bool playable = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(playable && Input.GetKeyDown(KeyCode.I))
+        if(playable && Input.GetKeyDown(KeyCode.P))
         {
             platformDrums.SetActive(true);
         }
@@ -26,7 +21,7 @@ public class Horn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Horn sound, some indicator that player is in??
+        //Horn sound in P, some indicator that player is in??
         playable = true;
         Debug.Log("inside");
     }

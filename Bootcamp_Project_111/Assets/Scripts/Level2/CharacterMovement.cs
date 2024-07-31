@@ -11,9 +11,9 @@ public class CharacterMovement : MonoBehaviour
     private float verticalVelocity = 0;
 
     private bool isGrounded;
-    public float rotateSpeed = .75f;
-    public float runSpeed = 7.0f;
-    private float gravityValue = 9.81f;
+    [SerializeField] float rotateSpeed = .75f;
+    [SerializeField] float runSpeed = 7.0f;
+    [SerializeField] float gravityValue = 9.81f;
 
     public float jumpHeight = 20f;
     bool doubleJump = false;
@@ -162,7 +162,7 @@ public class CharacterMovement : MonoBehaviour
     
     private void Inputs()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) // && _gameManager.keyActive_y
+        if (Input.GetKeyDown(KeyCode.Y) && _gameManager.keyActive_y)
         {
             //play C
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
@@ -174,7 +174,7 @@ public class CharacterMovement : MonoBehaviour
             }
             //jump(sonra I ve P ile triple jump.)
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U) && _gameManager.keyActive_u)
         {
             Debug.Log("Play D");
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
@@ -185,7 +185,7 @@ public class CharacterMovement : MonoBehaviour
             //play E
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
 
-            if (!isGrounded && doubleJump)
+            if (!isGrounded && doubleJump && _gameManager.keyActive_p)
             {
                 platforms[0].SetActive(true);
                 platforms[0].transform.parent = null;
@@ -200,13 +200,13 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && _gameManager.keyActive_o)
         {
             Debug.Log("Play F");
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
              
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && _gameManager.keyActive_p)
         {
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
             //play G 
