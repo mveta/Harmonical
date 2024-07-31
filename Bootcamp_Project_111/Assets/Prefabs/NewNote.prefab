@@ -5127,7 +5127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822e7d511fae95c4db99a35459e374f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 121
+  key: 112
 --- !u!136 &6633746047904989480
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5202,6 +5202,10 @@ PrefabInstance:
     - target: {fileID: 4915197833783546804, guid: c17742da3c9a5c74282762fbb9952da2, type: 3}
       propertyPath: m_Name
       value: MusicalNote2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410531706401081196, guid: c17742da3c9a5c74282762fbb9952da2, type: 3}
+      propertyPath: m_Intensity
+      value: 13.79
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2557134281454210459, guid: c17742da3c9a5c74282762fbb9952da2, type: 3}
