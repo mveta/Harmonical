@@ -16,12 +16,15 @@ public class CharacterMovement : MonoBehaviour
     private float gravityValue = 9.81f;
 
     public float jumpHeight = 20f;
+    public bool bootspeedglobal;
+    bool boatspeed = false;
     bool doubleJump = false;
     bool tripleJump = false;
     bool onRecord = false;
     Transform record;
 
     [SerializeField] GameObject[] platforms;
+    [SerializeField] GameObject barrier;
 
     GameManager _gameManager;
 
@@ -65,7 +68,18 @@ public class CharacterMovement : MonoBehaviour
         {
             transform.parent = record.transform;
         }
-              
+        bootspeedglobal = boatspeed;
+        Debug.Log("character : "+boatspeed);      
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Nota"))
+        {
+            Destroy(other.gameObject);
+            barrier.transform.Rotate(0, 0, 90f);
+            boatspeed = true;
+            bootspeedglobal = boatspeed;
+        }
     }
 
     void LookUp()
