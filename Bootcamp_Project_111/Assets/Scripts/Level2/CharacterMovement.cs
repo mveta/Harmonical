@@ -73,12 +73,11 @@ public class CharacterMovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Nota"))
+        if (other.gameObject.CompareTag("MusicalNote"))
         {
             Destroy(other.gameObject);
             barrier.transform.Rotate(0, 0, 90f);
-            boatspeed = true;
-            bootspeedglobal = boatspeed;
+            barrier.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

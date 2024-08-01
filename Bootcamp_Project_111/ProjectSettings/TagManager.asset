@@ -12,6 +12,8 @@ TagManager:
   - Portal
   - Record
   - CheckPoint
+  - Barrier
+  - MusicalNote
   layers:
   - Default
   - TransparentFX

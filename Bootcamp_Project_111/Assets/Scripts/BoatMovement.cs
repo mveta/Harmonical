@@ -8,11 +8,12 @@ public class BoatMovement : MonoBehaviour
 
 
     float rotatespeed = 2f;
-     public float transspeed=1.2f;
+    public float transspeed=1.2f;
     [SerializeField] GameObject player, playerboat;
     [SerializeField] GameObject fcanvas,uibuttoncanvas;
      int count = 0;
     CharacterMovement CharacterMovement;
+    [SerializeField] GameObject barrier;
 
     private void Start()
     {
@@ -45,10 +46,9 @@ public class BoatMovement : MonoBehaviour
         {
             uibuttoncanvas.SetActive(false);
         }
-        Debug.Log("boat : "+CharacterMovement.bootspeedglobal);
-        if (CharacterMovement.bootspeedglobal)
-        {           
-            transspeed = 2f;
+        if(barrier.GetComponent<BoxCollider>().enabled == false)
+        {
+            transspeed = 1.2f;
         }
 
     }
@@ -65,7 +65,6 @@ public class BoatMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Barrier"))
         {
             transspeed = 0;
-           
         }
     }
 
