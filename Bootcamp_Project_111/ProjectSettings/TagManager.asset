@@ -14,6 +14,10 @@ TagManager:
   - CheckPoint
   - Barrier
   - MusicalNote
+  - Guitar
+  - MoneyCase
+  - HandDrum
+  - Trumpet
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] GameObject fcanvas,uibuttoncanvas;
      int count = 0;
     CharacterMovement CharacterMovement;
-    [SerializeField] GameObject barrier;
+    [SerializeField] GameObject barrier,musiccasebarrier;
 
     private void Start()
     {
@@ -50,6 +50,10 @@ public class BoatMovement : MonoBehaviour
         {
             transspeed = 1.2f;
         }
+        if (!musiccasebarrier.active)
+        {
+            transspeed = 1.2f;
+        }
 
     }
 
@@ -65,6 +69,16 @@ public class BoatMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Barrier"))
         {
             transspeed = 0;
+        }
+        if (other.gameObject.CompareTag("Guitar"))
+        {
+            Destroy(other.gameObject);
+            transspeed = 4f;
+        }
+        if (other.gameObject.CompareTag("Trumpet"))
+        {
+            Destroy(other.gameObject);
+            transspeed = 4f;
         }
     }
 

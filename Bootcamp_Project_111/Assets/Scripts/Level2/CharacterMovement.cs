@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour
     Transform record;
 
     [SerializeField] GameObject[] platforms;
-    [SerializeField] GameObject barrier;
+    [SerializeField] GameObject barrier,musiccasebarrier;
 
     GameManager _gameManager;
 
@@ -78,6 +78,11 @@ public class CharacterMovement : MonoBehaviour
             Destroy(other.gameObject);
             barrier.transform.Rotate(0, 0, 90f);
             barrier.GetComponent<BoxCollider>().enabled = false;
+        }
+        if (other.gameObject.CompareTag("HandDrum"))
+        {
+            Destroy(other.gameObject);
+           musiccasebarrier.SetActive(false);
         }
     }
 
