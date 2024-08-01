@@ -167,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
             //play C
             //_audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
 
-            if (isGrounded)
+            if (isGrounded && _gameManager.jumpable)
             {
                 Jump();
                 doubleJump = true;

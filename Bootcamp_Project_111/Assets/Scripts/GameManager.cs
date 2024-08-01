@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     public bool keyActive_o;
     public bool keyActive_p;
-
+    public bool jumpable;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
         keyActive_o = false;
         keyActive_p = false;
-
+        jumpable = false;
     }
 
 }

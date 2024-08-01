@@ -26,8 +26,9 @@ public class DrumpadLogic : MonoBehaviour
         {
             Debug.Log("You did it!");
             transform.parent.GetChild(0).gameObject.SetActive(false);
+
             //sound congrats!!!
-            //record move
+  
             
         }
         else

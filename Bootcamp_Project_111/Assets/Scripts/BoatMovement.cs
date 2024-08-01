@@ -30,7 +30,7 @@ public class BoatMovement : MonoBehaviour
             playerboat.SetActive(true);
             fcanvas.SetActive(false);
         }
-        if(playerboat.active == true)
+        if(playerboat.activeSelf == true)
         {
             transform.Translate(new Vector3(0, 0, -3f) * Time.deltaTime );
             uibuttoncanvas.SetActive(true);

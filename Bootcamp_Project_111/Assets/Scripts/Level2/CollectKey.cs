@@ -43,6 +43,7 @@ public class CollectKey : MonoBehaviour
                 break;
             case KeyCode.Y:
                 gameManager.keyActive_y = true;
+                gameManager.jumpable = true;
                 break;
             default:
                 break;

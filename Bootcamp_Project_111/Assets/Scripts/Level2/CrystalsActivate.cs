@@ -9,8 +9,13 @@ public class CrystalsActivate : MonoBehaviour
 
     [SerializeField] GameObject[] musicNotes;
 
+    GameManager gameManager;
     private bool inside = false;
-    // Update is called once per frame
+
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
     void Update()
     {
         if (inside && Input.GetKeyDown(KeyCode.Y))
@@ -67,16 +72,18 @@ public class CrystalsActivate : MonoBehaviour
         animators[0].enabled = true;
         animators[1].enabled = true;
         inside = true;
+        gameManager.jumpable = false;
     }
     private void OnTriggerExit(Collider other)
     {
         inside = false;
+        gameManager.jumpable = true;
     }
 
     IEnumerator ShowCanvas()
     {
         canvas.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         canvas.SetActive(false);
     }
 }

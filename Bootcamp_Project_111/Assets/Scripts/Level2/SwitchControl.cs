@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class SwitchControl : MonoBehaviour
 {
+    GameManager gameManager;
 
 
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
+            gameManager.jumpable = false;
             
         }
     }
@@ -21,7 +26,7 @@ public class SwitchControl : MonoBehaviour
         {
             
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
-
+            gameManager.jumpable = true;
         }
     }
 

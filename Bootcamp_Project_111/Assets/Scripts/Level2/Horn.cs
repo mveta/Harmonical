@@ -8,12 +8,16 @@ public class Horn : MonoBehaviour
     GameObject platformDrums;
 
     bool playable = false;
+    GameManager gameManager;
 
-
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(playable && Input.GetKeyDown(KeyCode.P))
+        if(playable && Input.GetKeyDown(KeyCode.P) && gameManager.keyActive_p)
         {
             platformDrums.SetActive(true);
         }
