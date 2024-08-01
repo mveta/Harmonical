@@ -8,7 +8,7 @@ public class BoatMovement : MonoBehaviour
 
 
     float rotatespeed = 2f;
-    public float transspeed=1.2f;
+    public float transspeed=2.2f;
     [SerializeField] GameObject player, playerboat;
     [SerializeField] GameObject fcanvas,uibuttoncanvas;
      int count = 0;
@@ -48,11 +48,11 @@ public class BoatMovement : MonoBehaviour
         }
         if(barrier.GetComponent<BoxCollider>().enabled == false)
         {
-            transspeed = 1.2f;
+            transspeed = 2.2f;
         }
         if (!musiccasebarrier.active)
         {
-            transspeed = 1.2f;
+            transspeed = 2.2f;
         }
 
     }
