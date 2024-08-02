@@ -180,6 +180,27 @@ Unity
 * Developerlar ile iletişim sıklığının artırılması.
 
 
+# SPRİNT 3
+
+Modelleme yapacak ekip arkadaşımız Onur Emre Yılmaz yoğunluğundan dolayı yardımcı olamayacağını belirterek ekipten ayrıldı. 
+Projede kullanılması için yeni assetler bulundu. 
+Diğer üyelerin de beklenmedik özel durumlarından dolayı projenin teslim tarihine yetişmeyeceği belirlendi ve projenin scope'u yeniden değerlendirildi. 
+Geliştirilecek level sayısı bire indirildi.
+
+## ***Sprint İncelemesi*** :
+* Karakter kontrolü ve kamera baştan oluşturuldu.
+* Platformlar, mini puzzle mekanikleri ve logic entegre edildi.
+* Bulunan 3D assetler yerleştirildi.
+* Terrain tasarımları düzenlendi.
+* Oyun içi UI tasarlandı.
+* Ses assetleri hazırlandı.
+* Build alındı.
+
+## ***Sprint Retrospektive***
+
+Retrospektif toplantısı takım arkadaşlarımızın müsait olduğu bir zamana ertelendi.
+
+
 
 
 
