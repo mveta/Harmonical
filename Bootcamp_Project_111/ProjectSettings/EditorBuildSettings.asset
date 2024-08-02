@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Prototypes/HomeCinematic.unity
     guid: 14f68ddf5518bac4db056020ecd40ae4
   - enabled: 1
-    path: Assets/Scenes/RiverLevel.unity
+    path: Assets/Scenes/RiverPolatcan.unity
     guid: 52658d906a129e942b1668a7180df42a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

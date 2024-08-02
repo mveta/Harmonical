@@ -36,7 +36,7 @@ public class DamController : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.L))
             {
-                SoundManager.Instance.SoundPlayOneShot();
+                //SoundManager.Instance.SoundPlayOneShot();
             }
             if (direction == "right" && Input.GetKeyDown(KeyCode.L) && !isMoved)
             {
@@ -45,7 +45,7 @@ public class DamController : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.K))
             {
-                SoundManager.Instance.SoundPlayOneShot();
+                //SoundManager.Instance.SoundPlayOneShot();
             }
         }
 

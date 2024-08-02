@@ -13,11 +13,12 @@ public class GetToBoat : MonoBehaviour
 
 
     GameManager gameManager;
-
+    AudioSource audioSource;
     [SerializeField] GameObject sphere;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameManager.Instance;
         pressedY = false;
         pressedU = false;
@@ -68,6 +69,7 @@ public class GetToBoat : MonoBehaviour
         if(pressedY && Input.GetKeyDown(KeyCode.P) && gameManager.keyActive_p)
         {
             Debug.Log("Congrats");
+            audioSource.PlayOneShot(audioSource.clip);
             sphere.GetComponent<Collider>().enabled = false;   
             sphere.GetComponent<Animator>().enabled = true;
         }

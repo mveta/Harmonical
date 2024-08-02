@@ -9,11 +9,13 @@ public class SwitchActivation : MonoBehaviour
 
     bool pressedY;
     GameManager gameManager;
+    AudioSource audioSource;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
         pressedY = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class SwitchActivation : MonoBehaviour
         if (pressedY && Input.GetKeyDown(KeyCode.I))
         {
             _movingPlatform.moveable = true;
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 

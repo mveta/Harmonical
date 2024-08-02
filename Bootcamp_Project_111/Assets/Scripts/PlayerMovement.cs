@@ -75,7 +75,7 @@ namespace MarwanZaky
                 if (IsMoving)
                 {
                     LookAtCamera();
-                    SoundManager.Instance.SoundPlayOneShot();
+                    //SoundManager.Instance.SoundPlayOneShot();
                     transform.GetChild(0).GetComponent<Animator>().SetBool("walk", true);
                 }
                 else
@@ -85,7 +85,7 @@ namespace MarwanZaky
                 if (Input.GetKey(runKeyCode))
                 {
                     transform.GetChild(0).GetComponent<Animator>().SetBool("run", true);
-                    SoundManager.Instance.SoundPlayOneShot();
+                    //SoundManager.Instance.SoundPlayOneShot();
                     Movement();
                 }
                 else

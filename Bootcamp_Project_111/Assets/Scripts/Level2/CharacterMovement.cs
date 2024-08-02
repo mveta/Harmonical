@@ -21,6 +21,8 @@ public class CharacterMovement : MonoBehaviour
     bool doubleJump = false;
     bool tripleJump = false;
     bool onRecord = false;
+    bool onDrum;
+    bool onAir;
     Transform record;
 
     [SerializeField] GameObject[] platforms;
@@ -43,6 +45,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        _soundManager.Timer -= Time.deltaTime;
         GroundCheck();
         LookUp(); 
         Move();
@@ -52,12 +55,17 @@ public class CharacterMovement : MonoBehaviour
         if(!isGrounded && verticalVelocity < 0f)
         {
             _animator.SetBool("IsFalling", true);
+            onAir = true;
 
             if (onRecord)
             {
                 transform.parent = null;
                 onRecord = false;
                 
+            }
+            if (onDrum)
+            {
+                onDrum = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -113,9 +121,19 @@ public class CharacterMovement : MonoBehaviour
 
         Vector3 horizontalVelocity = forward * playerSpeed;
 
-        if(playerSpeed > 0.3f)
+        if(playerSpeed > 0.3f && !onAir)
         {
             _animator.SetBool("IsMoving", true);
+            
+            
+            if (onDrum)
+            {
+                _soundManager.SoundPlayOneShot(_soundManager.drumRun);
+            }
+            else
+            {
+                _soundManager.SoundPlayOneShot(_soundManager.runner);
+            }
         }
         else
         {
@@ -143,6 +161,7 @@ public class CharacterMovement : MonoBehaviour
         {
             transform.parent = null;
             onRecord = false;
+            onDrum = false;
         }
 
     }
@@ -159,11 +178,12 @@ public class CharacterMovement : MonoBehaviour
             _animator.SetBool("IsGrounded", true);
             _animator.SetBool("IsFalling", false);
             _animator.SetBool("IsJumping", false);
-            
+            onAir = false;
             
         }
         else
         {
+            onAir = true;
             isGrounded = false;
             _animator.SetBool("IsGrounded", false);
         }
@@ -181,6 +201,10 @@ public class CharacterMovement : MonoBehaviour
             onRecord = true;
             record = hit.transform;
         }
+        if (hit.collider.gameObject.CompareTag("Drum"))
+        {
+            onDrum = true;
+        }
     }
     
     
@@ -188,7 +212,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Y) && _gameManager.keyActive_y)
         {
-            //play C
+
             _audioSource.PlayOneShot(_soundManager.sounds[1]);
 
             if (isGrounded && _gameManager.jumpable)
@@ -200,13 +224,13 @@ public class CharacterMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U) && _gameManager.keyActive_u)
         {
-            //play D
+
             _audioSource.PlayOneShot(_soundManager.sounds[2]);
 
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            //play E
+
             _audioSource.PlayOneShot(_soundManager.sounds[3]);
 
             if (!isGrounded && doubleJump && _gameManager.keyActive_p)
@@ -226,13 +250,13 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O) && _gameManager.keyActive_o)
         {
-            //Play F
+
             _audioSource.PlayOneShot(_soundManager.sounds[4]);
              
         }
         if (Input.GetKeyDown(KeyCode.P) && _gameManager.keyActive_p)
         {
-            //play G
+
             _audioSource.PlayOneShot(_soundManager.sounds[5]);
              
             if (!isGrounded && tripleJump)

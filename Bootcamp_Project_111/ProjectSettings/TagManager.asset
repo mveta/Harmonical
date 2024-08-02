@@ -18,6 +18,7 @@ TagManager:
   - MoneyCase
   - HandDrum
   - Trumpet
+  - Drum
   layers:
   - Default
   - TransparentFX
