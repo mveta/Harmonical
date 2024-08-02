@@ -18,7 +18,7 @@ public class SwitchActivation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y) && gameManager.keyActive_y)
         {
             StartCoroutine(PlayCountdown());
         }

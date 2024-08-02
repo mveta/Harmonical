@@ -6,6 +6,7 @@ public class DrumpadLogic : MonoBehaviour
 {
 
     int index;
+
     
 
     void Start()
@@ -24,10 +25,16 @@ public class DrumpadLogic : MonoBehaviour
         if (transform.parent.childCount == index + 1)
         {
             Debug.Log("You did it!");
+            transform.parent.GetChild(0).gameObject.SetActive(false);
+
+            //sound congrats!!!
+  
+            
         }
         else
         {
             transform.parent.GetChild(index + 1).gameObject.SetActive(true);
+            //sound
         }
     }
 }

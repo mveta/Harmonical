@@ -11,9 +11,9 @@ public class CharacterMovement : MonoBehaviour
     private float verticalVelocity = 0;
 
     private bool isGrounded;
-    public float rotateSpeed = .75f;
-    public float runSpeed = 7.0f;
-    private float gravityValue = 9.81f;
+    [SerializeField] float rotateSpeed = .75f;
+    [SerializeField] float runSpeed = 7.0f;
+    [SerializeField] float gravityValue = 9.81f;
 
     public float jumpHeight = 20f;
     public bool bootspeedglobal;
@@ -27,12 +27,18 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] GameObject barrier,musiccasebarrier;
 
     GameManager _gameManager;
+    SoundManager _soundManager;
+
+    AudioSource _audioSource;
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _animator = transform.GetComponentInChildren<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
         _gameManager = GameManager.Instance;
+        _soundManager = SoundManager.Instance;
     }
 
     void Update()
@@ -180,30 +186,30 @@ public class CharacterMovement : MonoBehaviour
     
     private void Inputs()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) // && _gameManager.keyActive_y
+        if (Input.GetKeyDown(KeyCode.Y) && _gameManager.keyActive_y)
         {
             //play C
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
+            _audioSource.PlayOneShot(_soundManager.sounds[1]);
 
-            if (isGrounded)
+            if (isGrounded && _gameManager.jumpable)
             {
                 Jump();
                 doubleJump = true;
             }
-            //jump(sonra I ve P ile triple jump.)
+
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U) && _gameManager.keyActive_u)
         {
-            Debug.Log("Play D");
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
+            //play D
+            _audioSource.PlayOneShot(_soundManager.sounds[2]);
 
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             //play E
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
+            _audioSource.PlayOneShot(_soundManager.sounds[3]);
 
-            if (!isGrounded && doubleJump)
+            if (!isGrounded && doubleJump && _gameManager.keyActive_p)
             {
                 platforms[0].SetActive(true);
                 platforms[0].transform.parent = null;
@@ -218,18 +224,17 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && _gameManager.keyActive_o)
         {
-            Debug.Log("Play F");
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
+            //Play F
+            _audioSource.PlayOneShot(_soundManager.sounds[4]);
              
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && _gameManager.keyActive_p)
         {
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
-            //play G 
-
-
+            //play G
+            _audioSource.PlayOneShot(_soundManager.sounds[5]);
+             
             if (!isGrounded && tripleJump)
             {
                 platforms[1].SetActive(true);

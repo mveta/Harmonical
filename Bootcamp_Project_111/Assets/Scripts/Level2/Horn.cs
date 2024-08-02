@@ -8,17 +8,17 @@ public class Horn : MonoBehaviour
     GameObject platformDrums;
 
     bool playable = false;
-
-    // Start is called before the first frame update
-    void Start()
+    GameManager gameManager;
+    AudioSource audioSource;
+    private void Start()
     {
-        
+        gameManager = GameManager.Instance;
+        audioSource = GetComponent<AudioSource>();
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(playable && Input.GetKeyDown(KeyCode.I))
+        if(playable && Input.GetKeyDown(KeyCode.P) && gameManager.keyActive_p)
         {
             platformDrums.SetActive(true);
         }
@@ -26,9 +26,9 @@ public class Horn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Horn sound, some indicator that player is in??
+        audioSource.PlayOneShot(audioSource.clip);
         playable = true;
-        Debug.Log("inside");
+
     }
     private void OnTriggerExit(Collider other)
     {

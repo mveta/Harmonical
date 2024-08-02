@@ -8,6 +8,7 @@ public class DrumsSurface : MonoBehaviour
     [SerializeField]
     float speed;
 
+
     float elapsedTime = 0;
     float timeToPoint;
 
