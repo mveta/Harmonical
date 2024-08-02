@@ -24,12 +24,18 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] GameObject[] platforms;
 
     GameManager _gameManager;
+    SoundManager _soundManager;
+
+    AudioSource _audioSource;
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _animator = transform.GetComponentInChildren<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
         _gameManager = GameManager.Instance;
+        _soundManager = SoundManager.Instance;
     }
 
     void Update()
@@ -165,25 +171,25 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Y) && _gameManager.keyActive_y)
         {
             //play C
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
+            _audioSource.PlayOneShot(_soundManager.sounds[1]);
 
             if (isGrounded && _gameManager.jumpable)
             {
                 Jump();
                 doubleJump = true;
             }
-            //jump(sonra I ve P ile triple jump.)
+
         }
         if (Input.GetKeyDown(KeyCode.U) && _gameManager.keyActive_u)
         {
-            Debug.Log("Play D");
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
+            //play D
+            _audioSource.PlayOneShot(_soundManager.sounds[2]);
 
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             //play E
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
+            _audioSource.PlayOneShot(_soundManager.sounds[3]);
 
             if (!isGrounded && doubleJump && _gameManager.keyActive_p)
             {
@@ -202,16 +208,15 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O) && _gameManager.keyActive_o)
         {
-            Debug.Log("Play F");
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
+            //Play F
+            _audioSource.PlayOneShot(_soundManager.sounds[4]);
              
         }
         if (Input.GetKeyDown(KeyCode.P) && _gameManager.keyActive_p)
         {
-            //_audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
-            //play G 
-
-
+            //play G
+            _audioSource.PlayOneShot(_soundManager.sounds[5]);
+             
             if (!isGrounded && tripleJump)
             {
                 platforms[1].SetActive(true);

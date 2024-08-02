@@ -9,10 +9,11 @@ public class Horn : MonoBehaviour
 
     bool playable = false;
     GameManager gameManager;
-
+    AudioSource audioSource;
     private void Start()
     {
         gameManager = GameManager.Instance;
+        audioSource = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -25,9 +26,9 @@ public class Horn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Horn sound in P, some indicator that player is in??
+        audioSource.PlayOneShot(audioSource.clip);
         playable = true;
-        Debug.Log("inside");
+
     }
     private void OnTriggerExit(Collider other)
     {

@@ -13,19 +13,21 @@ public class CollectKey : MonoBehaviour
     GameObject canvas;
     GameObject note;
     GameObject particle;
+
+    AudioSource audioSource;
     private void Start()
     {
         gameManager = GameManager.Instance;
         canvas = transform.GetChild(0).gameObject;
         particle = transform.GetChild(1).gameObject;
         note = transform.GetChild(2).gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //play sound
-        //play particle
-
+   
+        audioSource.PlayOneShot(audioSource.clip);
         note.SetActive(false);
         particle.SetActive(true);
         StartCoroutine(ShowCanvas());

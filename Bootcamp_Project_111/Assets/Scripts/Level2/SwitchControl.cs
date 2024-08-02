@@ -5,11 +5,12 @@ using UnityEngine;
 public class SwitchControl : MonoBehaviour
 {
     GameManager gameManager;
-
+    AudioSource audioSource;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +18,7 @@ public class SwitchControl : MonoBehaviour
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameManager.jumpable = false;
+            audioSource.PlayOneShot(audioSource.clip);
             
         }
     }
