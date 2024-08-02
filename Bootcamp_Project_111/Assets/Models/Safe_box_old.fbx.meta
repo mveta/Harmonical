@@ -3,7 +3,17 @@ guid: 256e1bb43e5ae0e46b8b601297bbf5eb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Safe_box_old_door_mtl
+    second: {fileID: 2100000, guid: 78dcfb00edb072f45a3eb10a55d0b944, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Safe_box_old_mtl
+    second: {fileID: 2100000, guid: 068324836cb111f45b8a4aa451102cb4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

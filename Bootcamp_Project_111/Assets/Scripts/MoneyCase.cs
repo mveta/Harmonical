@@ -9,14 +9,14 @@ public class MoneyCase : MonoBehaviour
     [SerializeField] GameObject casedoorhandle,casedoor;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("MoneyCase")){
+        if (other.gameObject.CompareTag("Player")){
             kcanvas.SetActive(true);
             trig = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("MoneyCase"))
+        if (other.gameObject.CompareTag("Player"))
         {
             kcanvas.SetActive(false);
             trig = false;
@@ -34,7 +34,7 @@ public class MoneyCase : MonoBehaviour
             {
                 Debug.Log("oldu");
                // casedoor.transform.Rotate(0, -90f, 0);
-                casedoor.transform.SetPositionAndRotation(casedoor.transform.position, Quaternion.EulerRotation(0, -90, 0));
+                casedoor.transform.SetPositionAndRotation(casedoor.transform.position, Quaternion.Euler(0, -90, 0));
             }
             
         }

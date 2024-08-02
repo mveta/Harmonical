@@ -7,39 +7,70 @@ public class BoatMovement : MonoBehaviour
 {
 
 
-    float rotatespeed = 2f;
-    public float transspeed=2.2f;
-    [SerializeField] GameObject player, playerboat;
+    float rotatespeed = 3f;
+    public float transspeed=5f;
+    [SerializeField] GameObject player, boatCam, playerCam;
     [SerializeField] GameObject fcanvas,uibuttoncanvas;
      int count = 0;
     CharacterMovement CharacterMovement;
     [SerializeField] GameObject barrier,musiccasebarrier;
+    bool onBoat = false;
+    bool boatRowing = false;
+
+    AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         CharacterMovement = new CharacterMovement();
     }
     public static BoatMovement Instance { get;  set; }
-    void Update()
+    private void Update()
     {
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.F) && onBoat)
         {
-            transform.Rotate(new Vector3(0,-5f,0)*rotatespeed*Time.deltaTime);
-           
-        } 
-        if(Input.GetKey(KeyCode.I)) {
-            transform.Rotate(new Vector3(0, 5f, 0) *rotatespeed* Time.deltaTime);
-           
+            if (boatRowing)
+            {
+                playerCam.SetActive(true);
+                boatCam.SetActive(false);
+                player.transform.SetParent(null);
+                GameManager.Instance.jumpable = true;
+
+                audioSource.Stop();
+                boatRowing = false;
+
+            }
+            else
+            {
+                player.transform.SetParent(transform);
+                playerCam.SetActive(false);
+                boatCam.SetActive(true);
+                GameManager.Instance.jumpable = false;
+                audioSource.Play();
+                boatRowing = true;
+            }
+
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            player.SetActive(false);
-            playerboat.SetActive(true);
-            fcanvas.SetActive(false);
-        }
-        if(playerboat.activeSelf == true)
+    }
+    void FixedUpdate()
+    {
+        
+        
+        
+        if(boatRowing == true)
         {
             transform.Translate(new Vector3(0, 0, -3f) *transspeed* Time.deltaTime );
+
+            if (Input.GetKey(KeyCode.U))
+            {
+                transform.Rotate(new Vector3(0, -5f, 0) * rotatespeed * Time.deltaTime);
+
+            }
+            if (Input.GetKey(KeyCode.O))
+            {
+                transform.Rotate(new Vector3(0, 5f, 0) * rotatespeed * Time.deltaTime);
+
+            }
             uibuttoncanvas.SetActive(true);
         }
         else
@@ -48,11 +79,11 @@ public class BoatMovement : MonoBehaviour
         }
         if(barrier.GetComponent<BoxCollider>().enabled == false)
         {
-            transspeed = 2.2f;
+            transspeed = 7f;
         }
-        if (!musiccasebarrier.active)
+        if (!musiccasebarrier.activeSelf)
         {
-            transspeed = 2.2f;
+            transspeed = 7f;
         }
 
     }
@@ -62,9 +93,13 @@ public class BoatMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+
+            onBoat = true;
             count++;
-            if(count == 1)
-            fcanvas.SetActive(true);
+            if (count == 1)
+                StartCoroutine(CanvasActivation());
+            
+
         }
         if (other.gameObject.CompareTag("Barrier"))
         {
@@ -72,14 +107,23 @@ public class BoatMovement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Guitar"))
         {
+            
+            transspeed = 10f;
             Destroy(other.gameObject);
-            transspeed = 4f;
         }
         if (other.gameObject.CompareTag("Trumpet"))
         {
             Destroy(other.gameObject);
-            transspeed = 4f;
+            transspeed = 10f;
         }
     }
+    
+    IEnumerator CanvasActivation()
+    {
+        fcanvas.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        fcanvas.SetActive(false);
+    }
+
 
 }//class

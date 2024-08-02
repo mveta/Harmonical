@@ -7,7 +7,7 @@ public class PortalPlayerDetect : MonoBehaviour
 {
 
     [SerializeField] GameObject creditCanvas,animempty;
-     [SerializeField]Animator anim;
+    [SerializeField] Animator anim;
     AnimatorStateInfo animStateInfo;
 
     private void Update()
