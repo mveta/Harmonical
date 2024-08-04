@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using DG.Tweening;
+using System.Collections;
 namespace MarwanZaky
 {
     public class PlayerMovement : Character
@@ -21,8 +22,8 @@ namespace MarwanZaky
         int currentController = 0;
 
         bool isGrounded = false;
-        bool wasGrounded = false;
 
+        public PuzzleManager manager;
         [Header("Properties"), SerializeField] CharacterController controller;
         [SerializeField] Animator animator;
         [SerializeField] float walkSpeed = 5f;
@@ -30,15 +31,13 @@ namespace MarwanZaky
         [SerializeField] float gravityScale = 1f;
         [SerializeField] float jumpHeight = 8f;
 
-        [Header("Settings"), SerializeField] CursorLockMode cursorLockMode = CursorLockMode.None;
+        [Header("Settings")]
         [SerializeField] LayerMask groundMask;
         [SerializeField] MoveAir moveAir = MoveAir.Moveable;
         [SerializeField] AnimatorOverrideController[] controllers;
 
         [Header("Controlls"), SerializeField] KeyCode jumpKeyCode = KeyCode.Space;
         [SerializeField] KeyCode runKeyCode = KeyCode.LeftShift;
-        [SerializeField] KeyCode attackKeyCode = KeyCode.Mouse0;
-        [SerializeField] KeyCode granadeKeyCode = KeyCode.Mouse1;
         [SerializeField] KeyCode portalGear = KeyCode.KeypadEnter;
 
         public float Speed => IsRunning ? runSpeed : walkSpeed;
@@ -48,36 +47,22 @@ namespace MarwanZaky
         public Vector3 posY;
         public float launchSpeed = 10f;
 
+        //
+        AudioSource _audioSource;   
+        [SerializeField] GameObject[] platforms;
+        bool doubleJump = false;
+        bool tripleJump = false;
+        Rigidbody _rb;
+ 
+    
+
         private void Start()
         {
-            Cursor.lockState = cursorLockMode;
 
             col = controller.GetComponent<Collider>();
             cam = Camera.main.transform;
-
-        }
-
-
-        private void OnGUI()
-        {
-            var buttonStyle = new GUIStyle(GUI.skin.button);
-            buttonStyle.fontSize = 18;
-
-            //if (GUI.Button(new Rect(50, 32, 200, 32), $"Cursor Locked (M)", buttonStyle))
-            //    ToggleCursorLockState();
-
-            //if (GUI.Button(new Rect(50, 69, 200, 32), "Movement (1)", buttonStyle))
-            //    OnCurrentControllerChange?.Invoke(0);
-
-            //if (GUI.Button(new Rect(50, 106, 200, 32), "Sword (2)", buttonStyle))
-            //    OnCurrentControllerChange?.Invoke(1);
-
-            //if (GUI.Button(new Rect(50, 143, 200, 32), "Gun (3)", buttonStyle))
-            //{
-              
-            //    OnCurrentControllerChange?.Invoke(2);
-                
-            //}
+            _audioSource = GetComponent<AudioSource>();
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -85,30 +70,33 @@ namespace MarwanZaky
             IsGrounded();
             Inputs();
             SoundManager.Instance.Timer -= Time.deltaTime;
-            if (IsMoving)
+            if(PuzzleManager.Instance.isPuzzleActive == false)
             {
-                LookAtCamera();
-                SoundManager.Instance.SoundPlayOneShot();
-                transform.GetChild(0).GetComponent<Animator>().SetBool("walk", true) ;   
-            }
-            else
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("walk", false);
-            }
-            if (Input.GetKey(runKeyCode))
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("run", true);
-                SoundManager.Instance.SoundPlayOneShot();
-                Movement();
-            }
-            else
-            {
-                transform.GetChild(0).GetComponent<Animator>().SetBool("run", false);
-            }
+                if (IsMoving)
+                {
+                    LookAtCamera();
+                    //SoundManager.Instance.SoundPlayOneShot();
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("walk", true);
+                }
+                else
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("walk", false);
+                }
+                if (Input.GetKey(runKeyCode))
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("run", true);
+                    //SoundManager.Instance.SoundPlayOneShot();
+                    Movement();
+                }
+                else
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetBool("run", false);
+                }
 
-            Gravity();
-            Movement();
-            controller.Move(velocity * Time.deltaTime); 
+                Gravity();
+                Movement();
+                controller.Move(velocity * Time.deltaTime);
+            }
         }
 
         private void IsGrounded()
@@ -119,40 +107,66 @@ namespace MarwanZaky
             if (isGrounded && velocity.y < 0)
                 velocity.y = -5f;
 
-            // Play sound fx on land
-            if (isGrounded && !wasGrounded)
-                AudioManager.Instance.Play("Land");
-
-            wasGrounded = isGrounded;
             animator.SetBool("Float", !isGrounded);
         }
 
         private void Inputs()
         {
-            if (Input.GetKeyDown(jumpKeyCode) && isGrounded)
-                Jump();
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                //play C
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[1]);
+
+                if(controller.isGrounded)
+                {
+                    Jump();
+                    doubleJump = true;
+                }
+                //jump(sonra I ve P ile triple jump.)
+            }
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                //play D
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[2]);
+                 
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                //play E
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[3]);
+
+                if(!controller.isGrounded && doubleJump)
+                {
+                    //instantiate doesnt work sometimes?
+                    GameObject newPlatform = Instantiate(platforms[0], transform.position - Vector3.up, Quaternion.identity);
+                    Jump();
+                    StartCoroutine(DestroyPlatform(newPlatform));
+                    doubleJump = false;
+                    tripleJump = true;
+                }
+                
+            }
+          
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[4]);
+                //play F 
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _audioSource.PlayOneShot(SoundManager.Instance.sounds[5]);
+                //play G 
 
 
-            // Scroll between controllers
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-                UseNextController();
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-                UsePreviousController();
-
-            // Toggle cursor lock state
-            if (Input.GetKeyDown(KeyCode.M))
-                ToggleCursorLockState();
-
-            // Switch controllers.
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                OnCurrentControllerChange?.Invoke(0);
-
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-                OnCurrentControllerChange?.Invoke(1);
-
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-                OnCurrentControllerChange?.Invoke(2);
-
+                if (!controller.isGrounded && tripleJump)
+                {
+                    GameObject newPlatform = Instantiate(platforms[1], transform.position - Vector3.up, Quaternion.identity);
+                    Jump();
+                    StartCoroutine(DestroyPlatform(newPlatform));
+                    tripleJump=false;
+                }
+            }
+          
         }
 
         private void Gravity()
@@ -169,22 +183,28 @@ namespace MarwanZaky
 
             var moveX = Input.GetAxis("Horizontal");
             var moveY = Input.GetAxis("Vertical");
-            
-            var move = (transform.right * moveX + transform.forward * moveY).normalized;
+
+            // Hareket vektörü
+            var move = new Vector3(moveX, 0, moveY).normalized;
 
             animator.SetFloat("MoveX", GetAnimMoveVal(moveX, animator.GetFloat("MoveX")));
             animator.SetFloat("MoveY", GetAnimMoveVal(moveY, animator.GetFloat("MoveY")));
 
-            controller.Move(move * Speed * Time.deltaTime);
-            IsMoving = move.magnitude >= IS_MOVING_MIN_MAG;
-            
-        }
+            if (move.magnitude >= IS_MOVING_MIN_MAG)
+            {
+                // Karakteri hareket yönüne döndür
+                transform.rotation = Quaternion.LookRotation(move);
+                // Karakteri hareket ettir
+                controller.Move(move * Speed * Time.deltaTime);
+            }
 
+            IsMoving = move.magnitude >= IS_MOVING_MIN_MAG;
+        }
         private void Jump()
         {
-            AudioManager.Instance.Play("Jump");
+            SoundManager.Instance.SoundPlay(0);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * GRAVITY * gravityScale);
-            SoundManager.Instance.SoundPlay(2);
+            
         }
 
         private void LookAtCamera()
@@ -195,12 +215,6 @@ namespace MarwanZaky
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, SMOOTH_TIME * Time.deltaTime);
         }
 
-       
-
-        private void ToggleCursorLockState()
-        {
-            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
-        }
 
         #region Controller
 
@@ -220,8 +234,6 @@ namespace MarwanZaky
             OnCurrentControllerChange?.Invoke(currentController);
            
         }
-
-
         #endregion
 
         float GetAnimMoveVal(float move, float animCurVal)
@@ -233,5 +245,19 @@ namespace MarwanZaky
             var res = Mathf.Lerp(animCurVal, newVal, SMOOTH_TIME * Time.deltaTime);
             return newVal;
         }
+
+        //Platform destroyer SSSSsSSSSSSSSs
+        IEnumerator DestroyPlatform(GameObject obj)
+        {
+            yield return new WaitForSeconds(1f);
+
+            Destroy(obj);
+
+            
+        }
+
+
     }
+
+
 }

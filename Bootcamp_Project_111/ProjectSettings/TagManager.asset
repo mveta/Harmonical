@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Puzzle
+  - Ground
+  - Water
+  - Dam
+  - Final
+  - Portal
+  - Record
+  - CheckPoint
+  - Barrier
+  - MusicalNote
+  - Guitar
+  - MoneyCase
+  - HandDrum
+  - Trumpet
+  - Drum
   layers:
   - Default
   - TransparentFX
@@ -12,7 +27,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - postProcessing
   - 
   - 
   - 
