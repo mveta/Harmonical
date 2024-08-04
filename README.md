@@ -6,9 +6,9 @@ Takım Unity 111
 
 • Product Owner: Şeyda Ballı
 
-• Game Designers: Şevval Necla Er , Şeyda Ballı , Polatcan Gürbüz , Onur Küçük , Onur Emre Yılmaz
+• Game Designers: Şeyda Ballı , Polatcan Gürbüz
 
-• Developers: Onur Küçük, Polatcan Gürbüz, Onur Emre Yılmaz 
+• Developers: Onur Küçük, Polatcan Gürbüz, Şeyda Ballı 
 
 • Sound Designers: Şeyda Ballı
 
